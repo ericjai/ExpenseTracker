@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Team1ExpenseTracker.ExpenseEntryPage"
+             Title="Expense Entry"
+             BackgroundColor="Beige">
+    
+    <StackLayout Margin="10,35,0,0">
+        <Entry x:Name="ItemEntry"
+               Text="{Binding Name}"
+               Placeholder="Enter Item Name"
+               HeightRequest="50"/>
+        <Entry x:Name="AmountEntry"
+               Text="{Binding Amount}"
+               Placeholder="Enter Amount"
+               HeightRequest="50"
+               Keyboard="Numeric"/>
+        <Picker x:Name="Category"
+                Title="Select a category"
+                ItemsSource="{Binding EnumCategories}"/>
+
+        <DatePicker x:Name="ExpenseDatePicker"
+               Format="D"
+               Date="{Binding Date}"
+               MinimumDate="01/01/2020"
+               MaximumDate="12/30/2020"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Save"
+                    Clicked="ButtonSave_Clicked"
+                    TextColor="Green"
+                    BorderColor="Black"/>
+            <Button Grid.Column="1" Text="Delete"
+                    Clicked="ButtonDelete_Clicked"
+                    TextColor="Red"
+                    BorderColor="Black"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
